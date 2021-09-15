@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<canvas id="myCanvas">
+</canvas>
+
+<script>
+
+let canvas = document.getElementById('myCanvas');
+canvas.width = 500;
+canvas.height = 500;
+let ctx = canvas.getContext('2d');
+ctx.beginPath();
+ctx.moveTo(0,0);
+ctx.lineTo(100,100);
+ctx.closePath();
+ctx.stroke();
+
+// Game notes:
+
+// standard starting resources:
+// 200 food, 200 wood, 100 gold, 200 stone, 4/5 population
+
+// Dark Age
+// starting number of villagers: 3
+// 17 seconds to cut 10 wood in dark age no research
+// each tree has 100 wood
+// each bush has 125 food, there are 6 bushes
+// each sheet has 100 food
+// 50 food to make a villager
+// 50 gold to research loom
+// 60 food, 20 gold to make a militia
+// 17 seconds to get 10 food from a sheet
+// 28 seconds to build a mill
+// 17 seconds to create a villager
+// 16 seconds to build a house
+// 10 seconds to build a farm
+// 33 seconds to build a barracks
+// 23 seconds to make a lumber camp
+// a farm has about 176 food to start
+// 18 seconds to get 10 food from a farm
+// villager walks 12 units of distance in 10 seconds
+// house: 30 wood
+// farm: 60 wood
+// barracks: 175 wood
+// mill: 100 wood
+// tower: 25 wood, 10 stone
+// palisade wall: 2 wood
+// advance to feudal age: 500 food
+// 1:57 to research feudal age
+
+// Feudal age
+// Double-bit axe: 100 food, 50 wood; chop 20% faster
+// Horse-collar: 75 food, 75 wood; farms produce +75 food
+// spearman: 35 food, 25 wood
+// man-at-arms upgrade: 100 food, 40 gold
+// research tracking: 75 food; infantry have +2 line of sight
+// blacksmith: 150 wood
+// market: 175 wood
+// wheelbarrow: 175 food, 50 wood; villagers move 10% faster and carry 25% more resources
+// town watch: 75 food; all buildings +4 line of sight
+// archery range: 175 wood
+// stables: 175 wood
+// 25 seconds to build a stables
+// forging: 150 food; infantry and cavalry have +1 attack
+// scale mail armor: 100 food; infantry have +1 normal/+1 pierce armor
+// scale barding armor: 150 food; cavalry have +1 normal/+1 pierce armor
+// fletching: 100 food, 50 gold; archers, cavalry archers, TCs, castles, towers, etc. have +1 attack and +1 range
+// padded archer armor: 100 food; archers and cavalry archers have +1 normal/+1 pierce armor
+// 40 seconds to build a market
+// 34 seconds to build archery range
+// 34 seconds to build stables
+// advance to castle age: 800 food, 200 gold
+
+// Castle age
+
+
+function Villager(job) {
+    this.job = job;
+    return this;
+}
+
+let food                = 0;
+let wood                = 0;
+let gold                = 0;
+let stone               = 0;
+
+let num_houses          = 0;
+let num_town_centers    = 0;
+let num_mills           = 0;
+let num_lumber_camps    = 0;
+let num_mining_camps    = 0;
+
+let num_villagers       = 3;
+let num_scouts          = 1;
+
+let villagers = [];
+for(let i=0; i<num_villagers; i++) {
+    villagers.push(new Villager('x'));
+}
+
+for(let i=0; i<2; i++) {
+
+    for(let villager of villagers) {
+        console.log(villager.job);
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
